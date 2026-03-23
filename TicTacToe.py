@@ -24,7 +24,7 @@ def read_row_col():
     valid = False
 
     while not valid:
-        print("Enter row and column (1 - 3), seperated by a space: ")
+        text = input("Enter row and column (1 - 3), seperated by a space: ")
         pieces = text.split()
 
         if len(pieces) == 2 and pieces[0].isdigit() and pieces[1].isdigit():
@@ -86,7 +86,7 @@ def play():
 
     while not game_over:
         print_board(board)
-        print("Player " + current + " turn.")
+        print("Enter row and column for player " + current)
         row, col  = read_row_col()
 
         if board[row][col] != " ":
@@ -105,7 +105,7 @@ def play():
                 game_over = True
             
             else:
-                current = swap_player(current_player)
+                current = swap_player(current)
             
                
 def play_again():
