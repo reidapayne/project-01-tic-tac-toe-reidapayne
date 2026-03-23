@@ -83,29 +83,29 @@ def play():
     current = "X"
     game_over = False
         
-game_over = False
-while not game_over:
-    print_board(board)
-    print("Player " + current + " turn.")
-    row, col  = read_row_col()
 
-    if board[row][col] != " ":
+    while not game_over:
+        print_board(board)
+        print("Player " + current + " turn.")
+        row, col  = read_row_col()
+
+        if board[row][col] != " ":
         print("That spot is already taken. Try again.")
-    else:
-        board[row][col] = current
-
-        if winner_found(board, current):
-            print_board(board)
-            print("Player " + current + "wins! Game Over.")
-            game_over = True
-
-        elif tie_found(board):
-            print_board(board)
-            print("It's a tie! Game Over.")
-            game_over = True
-            
         else:
-            current = swap_player(current_player)
+            board[row][col] = current
+
+            if winner_found(board, current):
+                print_board(board)
+                print("Player " + current + "wins! Game Over.")
+                game_over = True
+
+            elif tie_found(board):
+                print_board(board)
+                print("It's a tie! Game Over.")
+                game_over = True
+            
+            else:
+                current = swap_player(current_player)
             
                
 def play_again():
