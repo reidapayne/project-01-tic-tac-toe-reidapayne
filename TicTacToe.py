@@ -90,7 +90,7 @@ def play():
         row, col  = read_row_col()
 
         if board[row][col] != " ":
-            print("That spot is full!")
+            continue
         else:
             board[row][col] = current
 
@@ -109,7 +109,8 @@ def play():
             
                
 def play_again():
-    answer = input("Play again? (Y/N): ").strip()
+    print("Do you want to play again? Y or N")
+    answer = input().strip()
     return answer == "Y" or answer == "y"
 
     #answer = input().strip()
