@@ -39,22 +39,22 @@ def play():
 
     def read_row_col():
         valid = False
-        row = 0
-        col = 0
 
         while not valid:
             text = input("Enter row and column (1 - 3), seperated by a space: ").strip()
             pieces = text.split()
-            if len(pieces) == 2:
-                a = pieces[0]
-                b = pieces[1]
-                if a.isdigit() and b.isdigit():
-                    row = int(a)
-                    col = int(b)
-                    if row >= 1 and row <= 3 and col >=1 and col <= 3:
-                        return row - 1 , col - 1
-            print("Invalid input. Examples 1 3 (rows ad columns are 1 to 3).")
-    
+            if len(pieces) == 2 and pieces[0].isdigit() and pieces[1].isdigit():
+                row = int(pieces[0])
+                col = int(pieces[1])
+                if row >= 1 and row <= 3 and col >=1 and col <= 3:
+                    valid = True
+                else: 
+                    print("Invalid input. Examples 1 3 (rows ad columns are 1 to 3).")
+
+            else:
+                print("Invalid input. Examples 1 3 (rows ad columns are 1 to 3).")
+        return row - 1, col - 1
+
 
     def winner_found(board, player):
         for row in range(3):
@@ -82,6 +82,8 @@ def play():
             return "O"
         else:
             return "X"
+
+
     def check_play():
         game_intro()
         board = create_empty_board()
