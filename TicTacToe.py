@@ -121,7 +121,7 @@ def play_again():
 
     if answer == "Y" or answer == "y":
         return True
-    elif answer == "N" or answer = "n":
+    elif answer == "N" or answer == "n":
         return False
     else:
         print("Invalid input. Enter Y or N.")
