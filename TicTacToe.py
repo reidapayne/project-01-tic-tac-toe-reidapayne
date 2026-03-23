@@ -1,11 +1,8 @@
 def play():
     print("Let's play Tic-Tac-Toe!")
-    
-    def game_intro():
-        print("Let's play Tic-Tac-Toe!")
-        print("When prompted, enter desired row and column numbers")
-        print("Example: 1 3")
-        print()
+    print("When prompted, enter desired row and column numbers")
+    print("Example: 1 3")
+    print()
     
 
     def create_empty_board():
