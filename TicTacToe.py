@@ -9,21 +9,15 @@ def create_empty_board():
 
 
 def print_board(board):
-    # Will look like:
-    # | _ | _ | X |
-    # | _ | _ | _ |
-    # | _ | _ | _ |
-
     for row in range(3):
         line = ""
         for col in range(3):
             cell = board[row][col]
             if cell == " ":
                 cell = "_"
-            line = line + "| " + cell + " "
+            line += "| " + cell + " "
         line += "|"
         print(line)
-    print()
 
 
 def read_row_col():
@@ -31,7 +25,6 @@ def read_row_col():
 
     while not valid:
         print("Enter row and column (1 - 3), seperated by a space: ")
-        text = input().strip()
         pieces = text.split()
 
         if len(pieces) == 2 and pieces[0].isdigit() and pieces[1].isdigit():
@@ -85,7 +78,6 @@ def play():
     print("| _ | _ | _ |")
     print("Let's play!")
     print("Player X starts!")
-    print()
 
     board = create_empty_board()
     current = "X"
@@ -114,17 +106,19 @@ while not game_over:
         else:
             current = swap_player(current_player)
             
-            
+               
 def play_again():
     answer = input("Play again? (Y/N): ").strip()
-    answer = input().strip()
+    return answer == "Y" or answer == "y"
 
-    if answer == "Y" or answer == "y":
-        return True
-    elif answer == "N" or answer == "n":
-        return False
-    else:
-        print("Invalid input. Enter Y or N.")
+    #answer = input().strip()
+
+    #if answer == "Y" or answer == "y":
+    #    return True
+    #elif answer == "N" or answer == "n":
+    #    return False
+    #else:
+    #    print("Invalid input. Enter Y or N.")
 
                 
 
@@ -139,4 +133,4 @@ def main():
 
 
 if __name__ == "__main__":
-    play()
+    main()
