@@ -51,7 +51,7 @@ def play():
                 if a.isdigit() and b.isdigit():
                     row = int(a)
                     col = int(b)
-                    if row >= 1 and row is <= 3 and col >=1 and c <= 3:
+                    if row >= 1 and row <= 3 and col >=1 and col <= 3:
                         return row - 1 , col - 1
             print("Invalid input. Examples 1 3 (rows ad columns are 1 to 3).")
     
