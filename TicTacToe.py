@@ -115,7 +115,7 @@ def play():
             
     def play_again():
         answer = input("Play again? (Y/N): ").strip()
-        return answer == "Y" or answer = "y"
+        return answer == "Y" or answer == "y"
                 
 
     def main():
