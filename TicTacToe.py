@@ -114,14 +114,8 @@ def play():
             
             
     def play_again():
-        while True:
-            answer = input("Play again? (Y/N)":).strip()
-                if answer == "Y" or answer == "y":
-                    return True
-                elif answer ==  "N" or answer == "n":
-                    return False
-                else:
-                    print("Invalid input. Please enter Y or N".)
+        answer = input("Play again? (Y/N): ").strip()
+        return answer == "Y" or answer = "y"
                 
 
     def main():
