@@ -11,7 +11,7 @@ def play():
         board = []
         for _ in range(3):
             row = []
-            for _ in range(3)
+            for _ in range(3):
                 row.append(" ")
             board.append(row)
         return board
