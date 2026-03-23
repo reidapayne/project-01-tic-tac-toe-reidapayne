@@ -90,7 +90,7 @@ def play():
         row, col  = read_row_col()
 
         if board[row][col] != " ":
-        print("That spot is already taken. Try again.")
+            print("That spot is already taken. Try again.")
         else:
             board[row][col] = current
 
