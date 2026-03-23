@@ -2,7 +2,9 @@ def play():
     print("Let's play Tic-Tac-Toe!")
     print("When prompted, enter desired row and column numbers")
     print("Example: 1 3")
-    print()
+    print("| _ | _ | X |")
+    print("| _ | _ | _ |")
+    print("| _ | _ | _ |")
     
 
     def create_empty_board():
