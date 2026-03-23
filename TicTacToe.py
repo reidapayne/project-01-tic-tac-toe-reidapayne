@@ -33,9 +33,9 @@ def read_row_col():
             if row >= 1 and row <= 3 and col >=1 and col <= 3:
                 valid = True
             else:
-                print("Invalid input. Examples 1 3 (rows and columns are 1 to 3).")
+                print("Please enter valid row and col numbers from 1 to 3:")
         else:
-            print("Invalid input. Examples 1 3 (rows and columns are 1 to 3).")
+            print("Please enter valid row and col numbers from 1 to 3:")
     return row - 1, col - 1
 
 
@@ -90,18 +90,18 @@ def play():
         row, col  = read_row_col()
 
         if board[row][col] != " ":
-            print("That spot is already taken. Try again.")
+            print("That spot is full!")
         else:
             board[row][col] = current
 
             if winner_found(board, current):
                 print_board(board)
-                print("Player " + current + "wins! Game Over.")
+                print("Player " + current + "WINS!")
                 game_over = True
 
             elif tie_found(board):
                 print_board(board)
-                print("It's a tie! Game Over.")
+                print("It's a TIE!")
                 game_over = True
             
             else:
