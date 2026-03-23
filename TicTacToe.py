@@ -1,4 +1,5 @@
 def play():
+    print("Let's play Tic-Tac-Toe!")
     
     def game_intro():
         print("Let's play Tic-Tac-Toe!")
