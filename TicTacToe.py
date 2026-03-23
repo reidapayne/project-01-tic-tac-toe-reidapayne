@@ -24,7 +24,7 @@ def read_row_col():
     valid = False
 
     while not valid:
-        text = input("Enter row and column (1 - 3), seperated by a space: ")
+        text = input()
         pieces = text.split()
 
         if len(pieces) == 2 and pieces[0].isdigit() and pieces[1].isdigit():
