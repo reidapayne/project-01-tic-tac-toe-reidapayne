@@ -15,7 +15,6 @@ def play():
                 row.append(" ")
             board.append(row)
         return board
-    return board
 
 
     def print_board(board):
@@ -25,6 +24,7 @@ def play():
         # | _ | _ | _ |
 
         for row in range(3):
+            line = ""
             for col in range(3):
                 cell = board[row][col]
                 if cell == " ":
@@ -58,7 +58,7 @@ def play():
 
     def winner_found(board, player):
         for row in range(3):
-            if board[0][col] == player and board[row][1] == player and board[row][2] == player:
+            if board[row][0] == player and board[row][1] == player and board[row][2] == player:
                 return True
         for col in range(3):
             if board[0][col] == player and board[1][col] == player and board [2][col] == player:
@@ -70,16 +70,16 @@ def play():
             return True
         return False
     
-    def tie_found():
+    def tie_found(board):
         for row in range(3):
             for col in range(3):
                 if board[row][col] == " ":
                     return False
         return True
     
-    def swap_player():
+    def swap_player(player):
         if player == "X":
-            return "0"
+            return "O"
         else:
             return "X"
     def check_play():
@@ -90,8 +90,8 @@ def play():
         
         while not game_over:
             print_board(board)
-            print("Player " + current + "'s turn.")
-            row, col  = read_row_col
+            print("Player " + current + " turn.")
+            row, col  = read_row_col()
 
             if board[row][col] != " ":
                 print("That spot is already taken. Try again.")
