@@ -83,6 +83,7 @@ def play():
     current = "X"
     game_over = False
         
+game_over = False
 while not game_over:
     print_board(board)
     print("Player " + current + " turn.")
