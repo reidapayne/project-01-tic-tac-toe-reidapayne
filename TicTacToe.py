@@ -6,6 +6,7 @@ def play():
     print("| _ | _ | _ |")
     print("| _ | _ | _ |")
     print("Let's play!")
+    print("Player X starts!")
     
 
     def create_empty_board():
