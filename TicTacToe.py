@@ -93,6 +93,7 @@ def play():
         if board[row][col] != " ":
             print_board(board)
             print("That spot if full!")
+            print()
             print("Enter row and column for player " + current)
             row, col  = read_row_col()
 
