@@ -38,7 +38,6 @@ def read_row_col():
             print("Please enter valid row and col numbers from 1 to 3:")
     return row - 1, col - 1
 
-
 def winner_found(board, player):
     for row in range(3):
         if board[row][0] == player and board[row][1] == player and board[row][2] == player:
