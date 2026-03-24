@@ -27,7 +27,7 @@ def read_row_col():
         text = input()
         pieces = text.split()
 
-        if len(pieces) == 2 and pieces[0].isdigit() and pieces[1].isdigit():
+        if len(pieces) == 2
             row = int(pieces[0])
             col = int(pieces[1])
             if row >= 1 and row <= 3 and col >=1 and col <= 3:
@@ -90,7 +90,7 @@ def play():
         row, col  = read_row_col()
 
         if board[row][col] != " ":
-            print_board(board)
+            print("That spot is full!")
             continue
         else:
             board[row][col] = current
