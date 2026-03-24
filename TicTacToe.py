@@ -90,11 +90,9 @@ def play():
         print("Enter row and column for player " + current)
         row, col  = read_row_col()
 
-        if board[row][col] != " ":
-            print_board(board)
-            print("That spot if full!")
-            print()
-            print("Enter row and column for player " + current)
+        while board[row][col] != " ":
+            print("That spot is full!")
+            print("Please enter valid row and col numbers from 1 to 3:")
             row, col  = read_row_col()
 
         board[row][col] = current
