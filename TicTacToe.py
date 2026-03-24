@@ -90,6 +90,7 @@ def play():
         row, col  = read_row_col()
 
         if board[row][col] != " ":
+            print_board(board)
             continue
         else:
             board[row][col] = current
