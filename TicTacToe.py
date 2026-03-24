@@ -27,7 +27,7 @@ def read_row_col():
         text = input()
         pieces = text.split()
 
-        if len(pieces) == 2:
+        if len(pieces) == 2 and pieces[0].isdigit() and pieces[1].isdigit():
             row = int(pieces[0])
             col = int(pieces[1])
             if row >= 1 and row <= 3 and col >=1 and col <= 3:
@@ -37,6 +37,7 @@ def read_row_col():
         else:
             print("Please enter valid row and col numbers from 1 to 3:")
     return row - 1, col - 1
+
 
 def winner_found(board, player):
     for row in range(3):
@@ -88,11 +89,10 @@ def play():
         print("Enter row and column for player " + current)
         row, col  = read_row_col()
 
-        while board[row][col] != " ":
-            print("That spot is full!")
-            print("Enter row and column for player " + current)
-            row, col  = read_row_col()
-
+        if board[row][col] != " ":
+            print_board(board)
+            continue
+        else:
             board[row][col] = current
 
             if winner_found(board, current):
