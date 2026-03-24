@@ -34,6 +34,11 @@ def read_row_col():
                 valid = True
             else:
                 print("Please enter valid row and col numbers from 1 to 3:")
+                if board[row][col] != "_":
+                    print("That spot is full!")
+                    print("Please enter valid row and col numbers from 1 to 3:")
+                else:
+                    valid = True
         else:
             print("Please enter valid row and col numbers from 1 to 3:")
     return row - 1, col - 1
@@ -129,7 +134,7 @@ def play_again():
     #else:
     #    print("Invalid input. Enter Y or N.")
 
-                
+              
 
 def main():
     keep_playing = True
