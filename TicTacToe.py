@@ -27,7 +27,7 @@ def read_row_col():
         text = input()
         pieces = text.split()
 
-        if len(pieces) == 2
+        if len(pieces) == 2:
             row = int(pieces[0])
             col = int(pieces[1])
             if row >= 1 and row <= 3 and col >=1 and col <= 3:
