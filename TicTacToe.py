@@ -113,7 +113,7 @@ def play_again():
     answer = input().strip()
 
     while answer != "Y" and answer != "y" and answer != "N" and answer != "n":
-        print("Please enter valid input: Y or N")
+        print("Please enter valid input: Y or N\n").strip()
         answer = input().strip()
 
     return answer == "Y" or answer == "y"
