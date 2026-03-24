@@ -88,10 +88,11 @@ def play():
         print("Enter row and column for player " + current)
         row, col  = read_row_col()
 
-        if board[row][col] != " ":
+        while board[row][col] != " ":
             print("That spot is full!")
-            continue
-        else:
+            print("Enter row and column for player " + current)
+            row, col  = read_row_col()
+
             board[row][col] = current
 
             if winner_found(board, current):
