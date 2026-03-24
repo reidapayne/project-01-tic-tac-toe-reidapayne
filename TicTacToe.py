@@ -30,17 +30,14 @@ def read_row_col():
         if len(pieces) == 2 and pieces[0].isdigit() and pieces[1].isdigit():
             row = int(pieces[0])
             col = int(pieces[1])
+
             if row >= 1 and row <= 3 and col >=1 and col <= 3:
                 valid = True
             else:
                 print("Please enter valid row and col numbers from 1 to 3:")
-                if board[row][col] != "_":
-                    print("That spot is full!")
-                    print("Please enter valid row and col numbers from 1 to 3:")
-                else:
-                    valid = True
         else:
             print("Please enter valid row and col numbers from 1 to 3:")
+
     return row - 1, col - 1
 
 
@@ -88,7 +85,6 @@ def play():
     current = "X"
     game_over = False
         
-
     while not game_over:
         print_board(board)
         print("Enter row and column for player " + current)
@@ -96,22 +92,24 @@ def play():
 
         if board[row][col] != " ":
             print_board(board)
-            continue
-        else:
-            board[row][col] = current
+            print("That spot if full!")
+            print("Enter row and column for player " + current)
+            row, col  = read_row_col()
 
-            if winner_found(board, current):
-                print_board(board)
-                print("Player " + current + " WINS!")
-                game_over = True
+        board[row][col] = current
 
-            elif tie_found(board):
-                print_board(board)
-                print("It's a TIE!")
-                game_over = True
+        if winner_found(board, current):
+            print_board(board)
+            print("Player " + current + " WINS!")
+            game_over = True
+
+        elif tie_found(board):
+            print_board(board)
+            print("It's a TIE!")
+            game_over = True
             
-            else:
-                current = swap_player(current)
+        else:
+            current = swap_player(current)
             
                
 def play_again():
