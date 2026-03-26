@@ -1,13 +1,33 @@
+"""
+Author:         Reid Payne
+Date:           3/16/2026
+Assignment:     Project 1
+Course:         CPSC1050
+Lab Section:    001
+
+CODE DESCRIPTION: This program will give a brief introduction to its usage, then ask two players, player X and player O, to 
+play Tic-Tac-Toe against each other. The players will be prompted to input row and column numbers to place their X or O marker on 
+the Tic-Tac-Toe board, which will update accordingly. When the board is filled (a tie) or a player has gotten three of their 
+markers in a row (horizontally, vertically, or diagonally) the game will announce the results and ask if you would like to play again.
+
+"""
+
+"""
+Creates and return a 3x3 Tic-Tac-Toe board, each cell starts as a blank space " "
+"""
 def create_empty_board():
     board = []
-    for _ in range(3):
+    for _ in range(3): # Create 3 rows
         row = []
-        for _ in range(3):
-            row.append(" ")
+        for _ in range(3): # Create 3 columns per row
+            row.append(" ") # Empty cell
         board.append(row)
     return board
 
 
+"""
+Prints the Tic-Tac_Toe board to the screen. Empty spaces are shown as underscores.
+"""
 def print_board(board):
     for row in range(3):
         line = ""
@@ -19,7 +39,11 @@ def print_board(board):
         line += "|"
         print(line)
 
+"""
+Reads and validates user input for row and column.
 
+Ensures values are digits between 1 and 3. Returns zero-based indices.
+"""
 def read_row_col():
     valid = False
 
@@ -41,6 +65,11 @@ def read_row_col():
     return row - 1, col - 1
 
 
+"""
+Checks whether the given player (X or O) has won.
+
+Returns True if a winning condition is met.
+"""
 def winner_found(board, player):
     for row in range(3):
         if board[row][0] == player and board[row][1] == player and board[row][2] == player:
@@ -58,6 +87,11 @@ def winner_found(board, player):
 
     return False
     
+
+"""
+Checks whether the game has ended in a tie, a tie occurs when no empty spaces remain and no one
+has won.
+"""
 def tie_found(board):
     for row in range(3):
         for col in range(3):
@@ -65,12 +99,20 @@ def tie_found(board):
                 return False
     return True
     
+
+"""
+Switches the current player, X becomes O and O becomes X
+"""
 def swap_player(player):
     if player == "X":
         return "O"
     else:
         return "X"
 
+
+"""
+Runs a single game of Tic-Tac-Toe.
+"""
 def play():
     print("Let's play Tic-Tac-Toe!")
     print("When prompted, enter desired row and column numbers")
@@ -110,7 +152,10 @@ def play():
         else:
             current = swap_player(current)
             
-               
+
+"""
+Asks the user if they want to play another game, returns True if yes and False otherwise
+"""
 def play_again():
     print("Do you want to play again? Y or N")
     answer = input().strip()
@@ -132,7 +177,9 @@ def play_again():
     #    print("Invalid input. Enter Y or N.")
 
               
-
+"""
+Controls overall game flow and continues playing until the user chooses not to.
+"""
 def main():
     keep_playing = True
 
