@@ -127,7 +127,7 @@ def play():
     current = "X"
     game_over = False
         
-    while not game_over:
+    while game_over == False:
         print_board(board)
         print("Enter row and column for player " + current)
         row, col  = read_row_col()
@@ -167,14 +167,6 @@ def play_again():
 
     return answer == "Y" or answer == "y"
 
-    #answer = input().strip()
-
-    #if answer == "Y" or answer == "y":
-    #    return True
-    #elif answer == "N" or answer == "n":
-    #    return False
-    #else:
-    #    print("Invalid input. Enter Y or N.")
 
               
 """
@@ -183,7 +175,7 @@ Controls overall game flow and continues playing until the user chooses not to.
 def main():
     keep_playing = True
 
-    while keep_playing:
+    while keep_playing != False:
         play()
         keep_playing = play_again()
         
