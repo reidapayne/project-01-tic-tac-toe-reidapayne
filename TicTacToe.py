@@ -12,23 +12,28 @@ markers in a row (horizontally, vertically, or diagonally) the game will announc
 
 """
 
-"""
-Creates and return a 3x3 Tic-Tac-Toe board, each cell starts as a blank space " "
-"""
+
 def create_empty_board():
-    board = []
-    for _ in range(3): # Create 3 rows
-        row = []
-        for _ in range(3): # Create 3 columns per row
-            row.append(" ") # Empty cell
-        board.append(row)
+    """
+    Creates and returns a 3x3 Tic-Tac-Toe board, each cell starts as a blank space " "
+
+    Returns: A 3x3 list of lists filled with a blank space
+    """
+    board = [
+        [" ", " ", " "],
+        [" ", " ", " "],
+        [" ", " ", " "]
+    ]    
     return board
 
 
-"""
-Prints the Tic-Tac_Toe board to the screen. Empty spaces are shown as underscores.
-"""
+
 def print_board(board):
+    """
+    Prints the Tic-Tac_Toe board to the screen. Empty spaces are shown as underscores.
+
+    Arguments: a board (3x3 list)
+    """
     for row in range(3):
         line = ""
         for col in range(3):
@@ -39,21 +44,23 @@ def print_board(board):
         line += "|"
         print(line)
 
-"""
-Reads and validates user input for row and column.
 
-Ensures values are digits between 1 and 3. Returns zero-based indices.
-"""
 def read_row_col():
+    """
+    Reads and validates user input for row and column. Ensures values are digits between 1 and 3. 
+    
+    Returns: A row and col, two integers.
+    """
     valid = False
 
-    while not valid:
-        text = input()
-        pieces = text.split()
+    while valid == False:
+        pieces = input().split()
 
-        if len(pieces) == 2 and pieces[0].isdigit() and pieces[1].isdigit():
+        # Checks that there are two peices and both are valid numbers
+        if len(pieces) == 2 and pieces[0] in ["1","2","3"] and pieces[1] in ["1", "2", "3"]:
             row = int(pieces[0])
             col = int(pieces[1])
+
 
             if row >= 1 and row <= 3 and col >=1 and col <= 3:
                 valid = True
@@ -62,37 +69,48 @@ def read_row_col():
         else:
             print("Please enter valid row and col numbers from 1 to 3:")
 
-    return row - 1, col - 1
+    return row - 1, col - 1 # Convert to zero based index
 
 
-"""
-Checks whether the given player (X or O) has won.
 
-Returns True if a winning condition is met.
-"""
 def winner_found(board, player):
+    """
+    Checks whether the given player (X or O) has won.
+
+    Arguments: board (3x3) list with player either "X" or "O"
+
+    Returns: True, if a winning condition is met.
+    """
+    # Checks all three row
     for row in range(3):
         if board[row][0] == player and board[row][1] == player and board[row][2] == player:
             return True
 
+    # Checks all three columns
     for col in range(3):
         if board[0][col] == player and board[1][col] == player and board [2][col] == player:
             return True
-        
+    
+    # Checks top left to bottom right diagonal
     if board[0][0] == player and board[1][1] == player and board [2][2] == player:
         return True
 
+    # Checks top right to bottom left diagonal
     if board[0][2] == player and board[1][1] == player and board[2][0] == player:
         return True
 
     return False
     
 
-"""
-Checks whether the game has ended in a tie, a tie occurs when no empty spaces remain and no one
-has won.
-"""
 def tie_found(board):
+    """
+    Checks whether the game has ended in a tie, a tie occurs when no empty spaces remain and no one
+    has won.
+
+    Arguments: board (3x3) list
+
+    Returns: True if no empty spaces remain
+    """
     for row in range(3):
         for col in range(3):
             if board[row][col] == " ":
@@ -100,20 +118,30 @@ def tie_found(board):
     return True
     
 
-"""
-Switches the current player, X becomes O and O becomes X
-"""
+
 def swap_player(player):
+    """
+    Switches the current player, X becomes O and O becomes X
+
+    Arguments: player - either "X" or "O"
+
+    Returns: "O" if the player was "X" and "X" if the player was "O"
+    """
     if player == "X":
         return "O"
     else:
         return "X"
 
 
-"""
-Runs a single game of Tic-Tac-Toe.
-"""
 def play():
+    """
+    Runs a single game of Tic-Tac-Toe, alternating players until someone wins
+
+    Returns: None
+
+    Arguments: None
+    """
+
     print("Let's play Tic-Tac-Toe!")
     print("When prompted, enter desired row and column numbers")
     print("Example: 1 3")
@@ -124,7 +152,7 @@ def play():
     print("Player X starts!")
 
     board = create_empty_board()
-    current = "X"
+    current = "X" # X always goes first
     game_over = False
         
     while game_over == False:
@@ -132,12 +160,13 @@ def play():
         print("Enter row and column for player " + current)
         row, col  = read_row_col()
 
+        # Keeps asking if the spot is already taken
         while board[row][col] != " ":
             print("That spot is full!")
             print("Please enter valid row and col numbers from 1 to 3:")
             row, col  = read_row_col()
 
-        board[row][col] = current
+        board[row][col] = current # Place the players "X" or "O"
 
         if winner_found(board, current):
             print_board(board)
@@ -150,13 +179,18 @@ def play():
             game_over = True
             
         else:
-            current = swap_player(current)
+            current = swap_player(current) # Switch to the other player
             
 
-"""
-Asks the user if they want to play another game, returns True if yes and False otherwise
-"""
+
 def play_again():
+    """
+    Asks the user if they want to play another game, returns True if yes and False otherwise
+
+    Arguments: None
+
+    Returns: True if user enters Y, False if user enters N
+    """
     print("Do you want to play again? Y or N")
     answer = input().strip()
 
@@ -168,11 +202,15 @@ def play_again():
     return answer == "Y" or answer == "y"
 
 
-              
-"""
-Controls overall game flow and continues playing until the user chooses not to.
-"""
+        
 def main():
+    """
+    Controls overall game flow and continues playing until the user chooses not to.
+
+    Arguments: None
+
+    Returns: None
+    """
     keep_playing = True
 
     while keep_playing != False:
